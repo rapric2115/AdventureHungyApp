@@ -1,10 +1,28 @@
-# Welcome to your Expo app 👋
+# Welcome to Adventure Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## 📝 Introduction
+
+Due to limited time, a full Figma design was not created. The focus was on **rapid development**, building a functional and clean app quickly.  
+
+During development, I want to experimented with **TailwindCSS / NativeWind** to streamline styling, although the final implementation used standard React Native styles for simplicity.
+
+Zustand was used to manage state.
+
+To enhance the development process and improve code quality, **AI (ChatGPT GPT-5)** was leveraged for:  
+
+- Debugging errors  
+- Suggesting best practices  
+- Improving UI structure and performance  
+
 
 ## Get started
+1. Clone the Repository
+   ```bash
+    git clone https://github.com/yourusername/adventure-log-app.git
+    cd adventure-log-app
+   ```
 
-1. Install dependencies
+2. Install dependencies
 
    ```bash
    npm install
@@ -18,33 +36,61 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
 - [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- [APK](https://raphaelrichardsonb.web.app)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## About the design 
 
-## Get a fresh project
+## 🎨 Design Overview
 
-When you're ready, run:
+The app follows a **minimalist UI** approach:
 
-```bash
-npm run reset-project
-```
+- **Input field** to add adventures
+- **FlatList** to display adventure logs
+- **Two additional screens**: summary and map
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+**Color palette:**
 
-## Learn more
+- Orange: `#F9A826`
+- Black: `#151718`
+- Blue: `#A8DADC`
 
-To learn more about developing your project with Expo, look at the following resources:
+Themed components (`ThemedView`, `ThemedText`) ensure **consistent light/dark mode support**.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+**Performance considerations:**
 
-## Join the community
+- For small datasets, `FlatList` is sufficient.
+- For larger datasets (hundreds of entries), `FlashList` could be reintroduced.
 
-Join our community of developers creating universal apps.
+## 🛠 Development Process & Requirements
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+**External Requirements:**
+
+- **Expo SDK** – React Native framework for fast development
+- **React Native** – UI components, hooks.
+- **@shopify/flash-list** *(optional)* – tested for optimized lists but currently replaced by `FlatList`
+- **Custom components** – `ThemedView`, `ThemedText`, `IconSymbol`, etc.
+- **Zustand** - State management.
+- **No external APIs** – all data is stored locally in app state.
+
+---
+
+## 🤖 Use of AI
+
+**ChatGPT (GPT-5)** was used to:
+
+- Debug errors (e.g., "Body is unusable", `tslib` dependency issues, nested VirtualizedList warnings) `Unable to resolve "tslib" from "node_modules\@shopify\flash-list\dist\AnimatedFlashList.js"`
+- Suggest best practices for list rendering (`FlatList`, `FlashList`, `ScrollView + map()`)
+- Refactor UI code and improve structure
+
+**Prompt history included:**
+
+- "Got an error in my Expo app 'Body is unusable'..."
+- "Unable to resolve 'tslib' from '@shopify/flash-list'"
+- "VirtualizedLists should never be nested..."
+
+## Reason for Not Sending Apple Build File
+
+- The Apple build file for the application could not be sent due to a misconfiguration on my Mac. I have replaced the Mac with a new one, and it requires proper configuration to generate and send the build. Once the setup is complete, I will be able to provide the Apple build file.
